@@ -30,7 +30,7 @@ list_items -> value ',' list_items : ['$1' | '$3'].
 list_items -> value list_items : ['$1' | '$2'].
 
 %% Tuple: { number, ... }
-tuple -> '{' tuple_items '}' : list_to_tuple('$2').
+tuple -> '{' tuple_items '}' : erlang:list_to_tuple('$2').
 tuple_items -> number : [number_to_elixir('$1')].
 tuple_items -> number ',' tuple_items : [number_to_elixir('$1') | '$3'].
 
@@ -58,5 +58,3 @@ ident_to_elixir({ident, _, I}) ->
     "NULL" -> nil;
     _ -> list_to_atom(I)
   end.
-
-list_to_tuple(L) -> list_to_tuple(L).
