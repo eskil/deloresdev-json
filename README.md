@@ -1,20 +1,25 @@
-# DeloresJSON Parser
+# DeloresDevJSON Parser
+
+[![GitHub CI](https://github.com/eskil/deloresdev-json/actions/workflows/elixir.yml/badge.svg)](https://github.com/eskil/deloresdev-json/actions/workflows/elixir.yml)
+[![Coverage Status](https://coveralls.io/repos/github/eskil/deloresdev-json/badge.svg?branch=main)](https://coveralls.io/github/eskil/deloresdev-json?branch=main)
+[![Last Updated](https://img.shields.io/github/last-commit/eskil/deloresdev-json.svg)](https://github.com/eskil/deloresdev-json/commits/master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Hex.pm Download Total](https://img.shields.io/hexpm/dt/deloresdev-json.svg?style=flat-square)](https://hex.pm/packages/deloresdev-json)
+![Static Badge](https://img.shields.io/badge/ircv3-no-blue)
+
 
 This contains the
-[leex](https://www.erlang.org/doc/apps/parsetools/leex.html) lexer
-(`deloresjson_lexer.xrl`) and
-[yecc](https://www.erlang.org/doc/apps/parsetools/yecc.html) grammar
-(`deloresjson_parser.yrl`) for parsing the DeloresJSON format used in
-[DeloresDev](https://github.com/grumpygamer/DeloresDev) animation
-files.
+[leex](https://www.erlang.org/doc/apps/parsetools/leex.html) lexer (`src/deloresdevjson_lexer.xrl`) and
+[yecc](https://www.erlang.org/doc/apps/parsetools/yecc.html) grammar (`src/deloresdevjson_parser.yrl`) for parsing the DeloresJSON format used in
+[DeloresDev](https://github.com/grumpygamer/DeloresDev) animation files.
 
-The Elixir wrapper is `DeloresJSON` (`lib/deloresdevjson.ex`).
+The Elixir wrapper is `DeloresDevJSON` (`lib/deloresdevjson.ex`).
 
 ---
 
-## What is DeloresJSON?
+## What is DeloresDevJSON?
 
-DeloresJSON is a relaxed, human-friendly superset of JSON used to describe sprite-sheet animations. It is not valid JSON, but shares its basic structure. The main differences are described below.
+DeloresDevJSON is a relaxed, human-friendly superset of JSON used to describe sprite-sheet animations. It is not valid JSON, but shares its basic structure. The main differences are described below.
 
 ---
 
@@ -86,9 +91,9 @@ Both C-style comment forms are supported and ignored by the lexer:
 
 ## Elixir parse results
 
-`DeloresJSON.parse/1` returns `{:ok, value}` or `{:error, reason}`:
+`DeloresDevJSON.parse/1` returns `{:ok, value}` or `{:error, reason}`:
 
-| DeloresJSON type | Elixir/Erlang result |
+| DeloresDevJSON type | Elixir/Erlang result |
 |---|---|
 | String | `binary()` |
 | Integer | `integer()` |
