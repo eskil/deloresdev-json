@@ -20,10 +20,17 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-scurry-*.tar
+deloresdevjson-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Elixir LS files
+.elixir_ls/
+
+# Generated leex/yecc
+src/*lexer.erl
+src/*parser.erl
 
 # Emacs files
 \#*\#

@@ -1,0 +1,75 @@
+sheet: "Delores"
+animations: [
+    {
+        name: "accusatory_point_end_right"
+        layers: [
+            {
+                name: "body"
+                frames: [
+                    "accusatory_point3"
+                    "accusatory_point2"
+                    "accusatory_point1"
+                ]
+            }
+            {
+                flags: 1
+                name: "head1"
+                frames: [
+                    "rstand_head1"
+                ]
+            }
+        ]
+    }
+    {
+        name: "walk_right"
+        layers: [
+            {
+                name: "body"
+                frames: [
+                    "rwalk_body1"
+                    "rwalk_body2"
+                    "rwalk_body3"
+                    "rwalk_body4"
+                    "rwalk_body5"
+                    "rwalk_body6"
+                    "rwalk_body7"
+                    "rwalk_body8"
+                ]
+                triggers: [
+                    NULL
+                    NULL
+                    "step"
+                    NULL
+                    NULL
+                    NULL
+                    "step"
+                    NULL
+                ]
+            }
+            {
+                flags: 1
+                name: "head1"
+                frames: [
+                    "rstand_head1"
+                    "rstand_head1"
+                    "rstand_head1"
+                    "rstand_head1"
+                    "rstand_head1"
+                    "rstand_head1"
+                    "rstand_head1"
+                    "rstand_head1"
+                ]
+                offsets: [
+                    "{0,1}"
+                    "{0,0}"
+                    "{0,-1}"
+                    "{0,0}"
+                    "{0,1}"
+                    "{0,0}"
+                    "{0,-1}"
+                    "{0,0}"
+                ]
+            }
+	]
+    }
+]

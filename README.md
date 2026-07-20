@@ -8,7 +8,7 @@ This contains the
 [DeloresDev](https://github.com/grumpygamer/DeloresDev) animation
 files.
 
-The Elixir wrapper is `DeloresJSON` (`lib/deloresjson.ex`).
+The Elixir wrapper is `DeloresJSON` (`lib/deloresdevjson.ex`).
 
 ---
 
@@ -103,7 +103,7 @@ Both C-style comment forms are supported and ignored by the lexer:
 
 ## Full example
 
-Input file (`priv/animations/DeloresAnimation.json`):
+Input file (`priv/tests/sample.json`):
 
 ```
 sheet: "Delores"

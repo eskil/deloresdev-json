@@ -6,7 +6,7 @@ defmodule DeloresDevJSON.MixProject do
       name: "DeloresDevJSON",
       description: description(),
       package: package(),
-      app: :scurry,
+      app: :deloresdevjson,
       version: "1.0.0",
       elixir: "~> 1.20",
       start_permanent: Mix.env() == :prod,

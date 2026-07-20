@@ -40,4 +40,26 @@ defmodule DeloresDevJSON do
       {:error, reason} -> raise "DeloresDevJSON parse error: #{inspect(reason)}"
     end
   end
+
+  @doc """
+  Parse a DeloresDevJSON file.
+  """
+  def parse_file(path) do
+    case File.read(path) do
+      {:ok, content} ->
+        parse(content)
+      err ->
+        err
+    end
+  end
+
+  @doc """
+  Parse a DeloresDevJSON file. Raises on error.
+  """
+  def parse_file!(path) do
+    case parse_file(path) do
+      {:ok, value} -> value
+      {:error, reason} -> raise "DeloresDevJSON parse file error: #{inspect(reason)}"
+    end
+  end
 end
