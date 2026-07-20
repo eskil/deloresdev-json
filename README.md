@@ -4,7 +4,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/eskil/deloresdev-json/badge.svg?branch=main)](https://coveralls.io/github/eskil/deloresdev-json?branch=main)
 [![Last Updated](https://img.shields.io/github/last-commit/eskil/deloresdev-json.svg)](https://github.com/eskil/deloresdev-json/commits/master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Hex.pm Download Total](https://img.shields.io/hexpm/dt/deloresdev-json.svg?style=flat-square)](https://hex.pm/packages/deloresdev-json)
 ![Static Badge](https://img.shields.io/badge/ircv3-no-blue)
 
 
