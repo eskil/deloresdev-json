@@ -8,7 +8,7 @@ defmodule DeloresDevJSON.MixProject do
       package: package(),
       app: :deloresdevjson,
       version: "1.0.0",
-      elixir: "~> 1.20",
+      elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       compilers: [:yecc, :leex] ++ Mix.compilers(),
