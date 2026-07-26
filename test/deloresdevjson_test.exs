@@ -86,6 +86,51 @@ defmodule DeloresDevJSONTest do
     assert {:ok, [1, 2, 3]} = DeloresDevJSON.parse(input)
   end
 
+  test "parse! returns value on success" do
+    assert %{foo: 1} = DeloresDevJSON.parse!("foo: 1")
+  end
+
+  test "parse_file reads and parses a file successfully" do
+    path = Path.join([:code.priv_dir(:deloresdevjson) |> to_string(), "tests/sample.json"])
+    path = if File.exists?(path), do: path, else: "priv/tests/sample.json"
+
+    assert {:ok, result} = DeloresDevJSON.parse_file(path)
+    assert result[:sheet] == "Delores"
+  end
+
+  test "parse_file! returns value on success" do
+    path = Path.join([:code.priv_dir(:deloresdevjson) |> to_string(), "tests/sample.json"])
+    path = if File.exists?(path), do: path, else: "priv/tests/sample.json"
+
+    result = DeloresDevJSON.parse_file!(path)
+    assert result[:sheet] == "Delores"
+  end
+
+  test "parse returns parser syntax error" do
+    assert {:error, {1, :deloresdevjson_parser, _msg}} = DeloresDevJSON.parse("{")
+  end
+
+  test "parse returns lexer error for illegal characters" do
+    assert {:error, {:error, {1, :deloresdevjson_lexer, _reason}, 1}} =
+             DeloresDevJSON.parse("@#$%")
+  end
+
+  test "parse! raises on syntax error" do
+    assert_raise RuntimeError, ~r/DeloresDevJSON parse error/, fn ->
+      DeloresDevJSON.parse!("{")
+    end
+  end
+
+  test "parse_file returns error for missing file" do
+    assert {:error, :enoent} = DeloresDevJSON.parse_file("/nonexistent/path/file.json")
+  end
+
+  test "parse_file! raises for missing file" do
+    assert_raise RuntimeError, ~r/DeloresDevJSON parse file error/, fn ->
+      DeloresDevJSON.parse_file!("/nonexistent/path/file.json")
+    end
+  end
+
   test "parses TestAnimation.json file" do
     path = Path.join([:code.priv_dir(:deloresdevjson) |> to_string(), "tests/sample.json"])
     # Fallback if priv_dir() doesn't work, use relative path
