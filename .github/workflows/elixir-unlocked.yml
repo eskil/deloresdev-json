@@ -20,9 +20,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        otp: ['27', '28', '29']
-        elixir: ['1.18', '1.19', '1.20']
-        exclude:
+        include:
+          - elixir: '1.14'
+            otp: '26'
+          - elixir: '1.15'
+            otp: '26'
+          - elixir: '1.16'
+            otp: '26'
+          - elixir: '1.17'
+            otp: '27'
           - elixir: '1.18'
             otp: '27'
           - elixir: '1.19'
@@ -46,5 +52,13 @@ jobs:
       run: mix deps.unlock --all
     - name: Install dependencies
       run: mix deps.get
+    - name: Compile dependencies
+      run: mix deps.compile
+      env:
+        MIX_ENV: test
+    - name: Compile
+      run: mix compile
+      env:
+        MIX_ENV: test
     - name: Run tests
-      run: mix test
+      run: mix test --trace
