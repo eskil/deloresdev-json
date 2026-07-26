@@ -16,24 +16,24 @@ defmodule DeloresDevJSONTest do
     assert {:ok, %{foo: 1, bar: 2}} = DeloresDevJSON.parse(input)
   end
 
-  # test "tuple of numbers" do
-  #   input = "{1,2}"
-  #   assert {:ok, {1, 2}} = DeloresDevJSON.parse(input)
-  #   input = "{1,2,3}"
-  #   assert {:ok, {1, 2, 3}} = DeloresDevJSON.parse(input)
-  # end
+  test "tuple of numbers" do
+    input = "{1,2}"
+    assert {:ok, {1, 2}} = DeloresDevJSON.parse(input)
+    input = "{1,2,3}"
+    assert {:ok, {1, 2, 3}} = DeloresDevJSON.parse(input)
+  end
 
-  # test "tuple of numbers with spaces" do
-  #   input = "{ 1 , 2 , 3 }"
-  #   assert {:ok, {1, 2, 3}} = DeloresDevJSON.parse(input)
-  # end
+  test "tuple of numbers with spaces" do
+    input = "{ 1 , 2 , 3 }"
+    assert {:ok, {1, 2, 3}} = DeloresDevJSON.parse(input)
+  end
 
-  # test "parses single dict with a tuple" do
-  #   input = """
-  #   foo: {0, 1}
-  #   """
-  #   assert {:ok, %{foo: {0, 1}}} = DeloresDevJSON.parse(input)
-  # end
+  test "parses single dict with a tuple" do
+    input = """
+    foo: {0, 1}
+    """
+    assert {:ok, %{foo: {0, 1}}} = DeloresDevJSON.parse(input)
+  end
 
   test "parses single dict" do
     input = """
