@@ -16,19 +16,32 @@ defmodule DeloresDevJSONTest do
     assert {:ok, %{foo: 1, bar: 2}} = DeloresDevJSON.parse(input)
   end
 
-  test "tuple of numbers" do
+  test "tuple of single number as ints" do
+    input = "{1}"
+    assert {:ok, {1}} = DeloresDevJSON.parse(input)
+  end
+
+  test "tuple of two numbers as ints" do
     input = "{1,2}"
     assert {:ok, {1, 2}} = DeloresDevJSON.parse(input)
+  end
+
+  test "tuple of more than two numbers as ints" do
     input = "{1,2,3}"
     assert {:ok, {1, 2, 3}} = DeloresDevJSON.parse(input)
   end
 
-  test "tuple of numbers with spaces" do
+  test "tuple of numbers with spaces instead of commas fails" do
+    input = "{1 2}"
+    assert {:error, {1, :deloresdevjson_parser, [~c"syntax error before: ", [~c"\"2\""]]}} = DeloresDevJSON.parse(input)
+  end
+
+  test "tuple of numbers with odd spaces as ints" do
     input = "{ 1 , 2 , 3 }"
     assert {:ok, {1, 2, 3}} = DeloresDevJSON.parse(input)
   end
 
-  test "parses single dict with a tuple" do
+  test "parses single dict with a tuple as ints" do
     input = """
     foo: {0, 1}
     """
