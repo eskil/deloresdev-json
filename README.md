@@ -26,8 +26,10 @@ DeloresDevJSON is a relaxed version of JSON used to describe sprite-sheet animat
 * Comma between elements optional when newlines are used.
 * Unquoted keys parsed as atoms.
 * Quoted keys parsed as strings.
-* Top object doesn't need curly braces
-* Supports `NULL` and tuples of numbers
+* Top object doesn't need curly braces.
+* Supports `NULL` and tuples of numbers.
+
+_NOTE: this exists just to support loading the DeloresDev assets. Consider using yaml/json instead_
 
 ### Values
 
