@@ -137,9 +137,9 @@ animations: [
                     "rstand_head1"
                 ]
                 offsets: [
-                    "{0,1}"
-                    "{0,0}"
-                    "{0,-1}"
+                    {0,1}
+                    {0,0}
+                    {0,-1}
                 ]
             }
         ]
@@ -147,7 +147,13 @@ animations: [
 ]
 ```
 
-Parsed Elixir result:
+Parsed with
+
+```elixir
+DeloresDevJSON.parse_file!("priv/sample.json")
+```
+
+results in
 
 ```elixir
 %{
@@ -165,12 +171,10 @@ Parsed Elixir result:
           flags: 1,
           name: "head1",
           frames: ["rstand_head1", "rstand_head1", "rstand_head1"],
-          offsets: ["{0,1}", "{0,0}", "{0,-1}"]
+          offsets: [{0, 1}, {0, 0}, {0, -1}]
         }
       ]
     }
   ]
 }
 ```
-
-Note: `offsets` values are stored as plain strings (e.g. `"{0,1}"`) rather than tuples because they are quoted strings in the source file, not bare numeric tuples.
