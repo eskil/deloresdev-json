@@ -7,39 +7,59 @@
 ![Static Badge](https://img.shields.io/badge/ircv3-no-blue)
 
 
-This contains the
-[leex](https://www.erlang.org/doc/apps/parsetools/leex.html) lexer (`src/deloresdevjson_lexer.xrl`) and
-[yecc](https://www.erlang.org/doc/apps/parsetools/yecc.html) grammar (`src/deloresdevjson_parser.yrl`) for parsing the DeloresJSON format used in
+This contains a
+[leex](https://www.erlang.org/doc/apps/parsetools/leex.html) lexer and
+[yecc](https://www.erlang.org/doc/apps/parsetools/yecc.html) grammar for parsing the DeloresJSON format used in
 [DeloresDev](https://github.com/grumpygamer/DeloresDev) animation files.
 
-The Elixir wrapper is `DeloresDevJSON` (`lib/deloresdevjson.ex`).
+* The Elixir wrapper is `DeloresDevJSON`.
+* The lexer is `src/deloresdevjson_lexer.xrl`.
+* the parser is in `src/deloresdevjson_parser.yrl`.
 
 ---
 
 ## What is DeloresDevJSON?
 
-DeloresDevJSON is a relaxed, human-friendly superset of JSON used to describe sprite-sheet animations. It is not valid JSON, but shares its basic structure. The main differences are described below.
+DeloresDevJSON is a relaxed version of JSON used to describe sprite-sheet animations. It is not valid JSON, but shares its basic structure. The main differences are described below.
 
 ---
 
 ## Format rules
 
-### Root object — no enclosing braces required
+### Comments
 
-A top-level object does **not** need `{` `}` around it. The file can just be a flat list of `key: value` pairs:
+Both C-style comment forms are supported and ignored by the lexer:
 
+```json
+// single-line comment
+
+/* multi
+   line comment */
 ```
-sheet: "Delores"
-animations: [...]
+
+### Unquoted keys
+
+Object keys can be bare identifiers without quotes:
+
+```json
+name: "walk_right"
+flags: 1
 ```
 
-This is equivalent to `{ "sheet": "Delores", "animations": [...] }` in standard JSON.
+where standard json would be
+
+```json
+{
+  "name": "walk_right",
+  "flags": 1
+}
+```
 
 ### Separators are optional
 
 Commas between list items or dict entries are **optional**. Newlines alone are sufficient:
 
-```
+```json
 // comma-separated (valid)
 [1, 2, 3]
 
@@ -51,13 +71,46 @@ Commas between list items or dict entries are **optional**. Newlines alone are s
 ]
 ```
 
-### Unquoted keys
+### Root object — no enclosing braces required
 
-Object keys can be bare identifiers without quotes:
+The top-level object does not need `{` `}` around it. The file can just be a flat list of `key: value` pairs:
 
+<table>
+  <tr>
+    <th>DeloresDevJSON</th>
+    <th>JSON</th>
+  </tr>
+  <tr>
+    <td>
+    ```json
+    sheet: "Delores"
+    animations: [...]
+    ```
+    </td>
+    <td>
+    ```json
+    {
+      "sheet": "Delores",
+      "animations": [...]
+    }
+    ```
+    </td>
+  </tr>
+</table>
+
+
+In standard JSON, this would be
+
+```json
 ```
-name: "walk_right"
-flags: 1
+
+### Number tuples
+
+Tuples of numbers are parsed directly to elixir number tuples, while
+DeloresDev JSON escapes these as strings, they're supported.
+
+```json
+offsets: [{0, 10}, {10, 10}]
 ```
 
 ### Values
@@ -71,20 +124,9 @@ flags: 1
 | `NULL` | `NULL` | The special identifier `NULL` becomes `nil` |
 | Dict | `{ key: value }` | Braces required for nested dicts |
 | List | `[value, value]` | `[…]` |
-| Tuple | `{1, 2}` | Braces containing **only numbers** — becomes an Erlang/Elixir tuple |
+| Tuple | `{1, 2}` | Braces containing **only numbers** — becomes an Erlang/Elixir tuple of numbers |
 
 > **Dict vs. tuple disambiguation:** a `{…}` block is parsed as a *tuple* only when every element is a bare number. If any element is a non-number (string, ident, nested dict, etc.) it is treated as a dict.
-
-### Comments
-
-Both C-style comment forms are supported and ignored by the lexer:
-
-```
-// single-line comment
-
-/* multi
-   line comment */
-```
 
 ---
 
