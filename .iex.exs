@@ -14,6 +14,6 @@ IO.puts(IO.ANSI.format([:white, :bright, """
 #{description}
 
 Try:
-  DeloresDevJSON.parse_file('priv/tests/sample.json')
-  DeloresDevJSON.parse_file!('priv/tests/sample.json')
+  DeloresDevJSON.parse_file('priv/sample.json')
+  DeloresDevJSON.parse_file!('priv/sample.json')
 """], true))
