@@ -6,8 +6,25 @@ defmodule DeloresDevJSONTest do
     assert {:ok, [nil, nil, 1]} = DeloresDevJSON.parse("[NULL NULL 1]")
   end
 
+  test "quoted keys parsed as strings" do
+    input = """
+    { "foo": 1 }
+    """
+    assert {:ok, %{"foo" => 1}} = DeloresDevJSON.parse(input)
+  end
+
+  test "unquoted keys parsed as strings" do
+    input = """
+    { foo: 1 }
+    """
+    assert {:ok, %{foo: 1}} = DeloresDevJSON.parse(input)
+  end
+
   test "toplevel dict without curly braces" do
-    input = "foo: 1\nbar: 2"
+    input = """
+    foo: 1
+    bar: 2
+    """
     assert {:ok, %{foo: 1, bar: 2}} = DeloresDevJSON.parse(input)
   end
 
@@ -73,7 +90,7 @@ defmodule DeloresDevJSONTest do
     // comment
     foo: 1
     /* another comment */
-    bar: \"baz\"
+    bar: "baz"
     """
     assert {:ok, %{foo: 1, bar: bar_val}} = DeloresDevJSON.parse(input)
     assert is_binary(bar_val)
@@ -82,8 +99,8 @@ defmodule DeloresDevJSONTest do
 
   test "parses dict with newlines as separators and string values are binaries" do
     input = """
-    foo: \"hello\"
-    bar: \"world\"
+    foo: "hello"
+    bar: "world"
     baz: 3
     """
     assert {:ok, %{foo: foo_val, bar: bar_val, baz: 3}} = DeloresDevJSON.parse(input)
@@ -107,6 +124,28 @@ defmodule DeloresDevJSONTest do
     ]
     """
     assert {:ok, [1, 2, 3]} = DeloresDevJSON.parse(input)
+  end
+
+  test "parses list with newlines and commas as separators" do
+    input = """
+    [
+      1,
+      2,
+      3
+    ]
+    """
+    assert {:ok, [1, 2, 3]} = DeloresDevJSON.parse(input)
+  end
+
+  test "fails list with newlines and comma on last line" do
+    input = """
+    [
+      1,
+      2,
+      3,
+    ]
+    """
+    assert {:error, {5, :deloresdevjson_parser, [~c"syntax error before: ", ~c"']'"]}} = DeloresDevJSON.parse(input)
   end
 
   test "list of tuples of ints" do

@@ -22,9 +22,10 @@ This contains a
 
 DeloresDevJSON is a relaxed version of JSON used to describe sprite-sheet animations. It is not valid JSON or yaml. The main differences are
 
-* Allows commas
-* Commas on newlines not needed
-* Keys don't need to be quotes
+* Allows comments.
+* Comma between elements optional when newlines are used.
+* Unquoted keys parsed as atoms.
+* Quoted keys parsed as strings.
 * Top object doesn't need curly braces
 * Supports `NULL` and tuples of numbers
 
