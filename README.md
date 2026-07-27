@@ -41,12 +41,21 @@ Both C-style comment forms are supported and ignored by the lexer:
 
 Object keys can be bare identifiers without quotes:
 
-```json
+<table>
+<tr>
+<th>DeloresDevJSON</th>
+<th>JSON</th>
+</tr>
+<tr>
+<td>
+
+```
 name: "walk_right"
 flags: 1
 ```
 
-where standard json would be
+</td>
+<td>
 
 ```json
 {
@@ -54,6 +63,11 @@ where standard json would be
   "flags": 1
 }
 ```
+
+</td>
+</tr>
+</table>
+
 
 ### Separators are optional
 
@@ -91,7 +105,7 @@ animations: [...]
 </td>
 <td>
 
-```
+```json
 {
   "sheet": "Delores",
   "animations": [...]
@@ -101,16 +115,6 @@ animations: [...]
 </td>
 </tr>
 </table>
-
-
-In standard JSON, this would be
-
-```json
-{
-  "sheet": "Delores",
-  "animations": [...]
-}
-```
 
 ### Number tuples
 
