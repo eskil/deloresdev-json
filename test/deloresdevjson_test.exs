@@ -99,6 +99,29 @@ defmodule DeloresDevJSONTest do
     assert {:ok, [1, 2, 3]} = DeloresDevJSON.parse(input)
   end
 
+  test "list of tuples of ints" do
+    input = "[{1, 2}, {2, 3}, {3, 4}]"
+    assert {:ok, [{1, 2}, {2, 3}, {3, 4}]} = DeloresDevJSON.parse(input)
+  end
+
+  test "dict to list of tuples of ints" do
+    input = "{offsets: [{1, 2}, {2, 3}, {3, 4}]}"
+    assert {:ok, %{offsets: [{1, 2}, {2, 3}, {3, 4}]}} = DeloresDevJSON.parse(input)
+  end
+
+  test "dict to list of tuples of ints using newlines" do
+    input = """
+    {
+      offsets: [
+        {1, 2}
+        {2, 3}
+        {3, 4}
+      ]
+    }
+    """
+    assert {:ok, %{offsets: [{1, 2}, {2, 3}, {3, 4}]}} = DeloresDevJSON.parse(input)
+  end
+
   test "parse! returns value on success" do
     assert %{foo: 1} = DeloresDevJSON.parse!("foo: 1")
   end
