@@ -82,18 +82,22 @@ The top-level object does not need `{` `}` around it. The file can just be a fla
   </tr>
   <tr>
     <td>
+
 ```json
 sheet: "Delores"
 animations: [...]
 ```
+
     </td>
     <td>
+
 ```json
 {
   "sheet": "Delores",
   "animations": [...]
 }
 ```
+
     </td>
   </tr>
 </table>
