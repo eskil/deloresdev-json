@@ -68,12 +68,9 @@ DeloresDevJSON is a relaxed version of JSON used to describe sprite-sheet animat
 
 ## Full example
 
-Input file (`priv/tests/sample.json`):
-
-
 <table>
 <tr>
-<th>DeloresDevJSON</th>
+<th>DeloresDevJSON `priv/sample.json`</th>
 <th>Standard JSON</th>
 </tr>
 <tr>
