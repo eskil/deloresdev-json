@@ -14,135 +14,19 @@ This contains a
 
 * The Elixir wrapper is `DeloresDevJSON`.
 * The lexer is `src/deloresdevjson_lexer.xrl`.
-* the parser is in `src/deloresdevjson_parser.yrl`.
+* The parser is in `src/deloresdevjson_parser.yrl`.
 
 ---
 
 ## What is DeloresDevJSON?
 
-DeloresDevJSON is a relaxed version of JSON used to describe sprite-sheet animations. It is not valid JSON, but shares its basic structure. The main differences are described below.
+DeloresDevJSON is a relaxed version of JSON used to describe sprite-sheet animations. It is not valid JSON or yaml. The main differences are
 
----
-
-## Format rules
-
-### Comments
-
-Both C-style comment forms are supported and ignored by the lexer:
-
-```json
-// single-line comment
-
-/* multi
-   line comment */
-```
-
-### Unquoted keys
-
-Object keys can be bare identifiers without quotes:
-
-<table>
-<tr>
-<th>DeloresDevJSON</th>
-<th>JSON</th>
-</tr>
-<tr>
-<td>
-
-```
-name: "walk_right"
-flags: 1
-```
-
-</td>
-<td>
-
-```json
-{
-  "name": "walk_right",
-  "flags": 1
-}
-```
-
-</td>
-</tr>
-</table>
-
-
-### Separators are optional
-
-Commas between list items or dict entries are **optional**. Newlines alone are sufficient:
-
-<table>
-<tr>
-<th>DeloresDevJSON</th>
-<th>JSON</th>
-</tr>
-<tr>
-<td>
-
-```
-// comma-separated (valid)
-[1, 2, 3]
-
-// newline-separated (also valid)
-[
-  1
-  2
-  3
-]
-```
-
-</td>
-<td>
-
-```json
-[1, 2, 3]
-```
-
-</td>
-</tr>
-</table>
-
-### Root object — no enclosing braces required
-
-The top-level object does not need `{` `}` around it. The file can just be a flat list of `key: value` pairs:
-
-<table>
-<tr>
-<th>DeloresDevJSON</th>
-<th>JSON</th>
-</tr>
-<tr>
-<td>
-
-```
-sheet: "Delores"
-animations: [...]
-```
-
-</td>
-<td>
-
-```json
-{
-  "sheet": "Delores",
-  "animations": [...]
-}
-```
-
-</td>
-</tr>
-</table>
-
-### Number tuples
-
-Tuples of numbers are parsed directly to elixir number tuples, while
-DeloresDev JSON escapes these as strings, they're supported.
-
-```json
-offsets: [{0, 10}, {10, 10}]
-```
+* Allows commas
+* Commas on newlines not needed
+* Keys don't need to be quotes
+* Top object doesn't need curly braces
+* Supports `NULL` and tuples of numbers
 
 ### Values
 
@@ -161,9 +45,12 @@ offsets: [{0, 10}, {10, 10}]
 
 ---
 
-## Elixir parse results
+## Elixir API
 
-`DeloresDevJSON.parse/1` returns `{:ok, value}` or `{:error, reason}`:
+* `DeloresDevJSON.parse/1` parses a string and returns `{:ok, value}` or `{:error, reason}`.
+* `DeloresDevJSON.parse!/1` parses a string; returns `value` or raises an exception on error.
+* `DeloresDevJSON.parse_file/1` loads parses a file and returns `{:ok, value}` or `{:error, reason}`.
+* `DeloresDevJSON.parse_file!/1` loads parses a file; returns `value` or raises an exception on error.
 
 | DeloresDevJSON type | Elixir/Erlang result |
 |---|---|
@@ -186,7 +73,7 @@ Input file (`priv/tests/sample.json`):
 <table>
 <tr>
 <th>DeloresDevJSON</th>
-<th>JSON</th>
+<th>Standard JSON</th>
 </tr>
 <tr>
 <td>
