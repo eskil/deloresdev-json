@@ -47,7 +47,7 @@ Object keys can be bare identifiers without quotes:
 <th>JSON</th>
 </tr>
 <tr>
-<td>
+<td style="vertical-align:top">
 
 ```
 name: "walk_right"
@@ -55,7 +55,7 @@ flags: 1
 ```
 
 </td>
-<td>
+<td style="vertical-align:top">
 
 ```json
 {
@@ -79,7 +79,7 @@ Commas between list items or dict entries are **optional**. Newlines alone are s
 <th>JSON</th>
 </tr>
 <tr>
-<td>
+<td style="vertical-align:top">
 
 ```
 // comma-separated (valid)
@@ -94,7 +94,7 @@ Commas between list items or dict entries are **optional**. Newlines alone are s
 ```
 
 </td>
-<td>
+<td style="vertical-align:top">
 
 ```json
 [1, 2, 3]
@@ -114,7 +114,7 @@ The top-level object does not need `{` `}` around it. The file can just be a fla
 <th>JSON</th>
 </tr>
 <tr>
-<td>
+<td style="vertical-align:top">
 
 ```
 sheet: "Delores"
@@ -122,7 +122,7 @@ animations: [...]
 ```
 
 </td>
-<td>
+<td style="vertical-align:top">
 
 ```json
 {
@@ -189,9 +189,10 @@ Input file (`priv/tests/sample.json`):
 <th>JSON</th>
 </tr>
 <tr>
-<td>
+<td style="vertical-align:top">
 
 ```
+// Delores animations
 sheet: "Delores"
 animations: [
   {
@@ -230,7 +231,7 @@ animations: [
 ```
 
 </td>
-<td>
+<td style="vertical-align:top">
 
 ```json
 {
@@ -265,7 +266,7 @@ animations: [
 	    "{0,0}",
 	    "{0,-1}"
 	  ]
-	}
+        }
       ]
     }
   ]
