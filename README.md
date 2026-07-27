@@ -240,32 +240,32 @@ animations: [
     {
       "name": "walk_right",
       "layers": [
-	{
-	  "name": "body",
-	  "frames": [
-	    "rwalk_body1",
-	    "rwalk_body2",
-	    "rwalk_body3"
-	  ],
-	  "triggers": [
-	    "",
-	    "",
-	    "step"
-	  ]
-	},
-	{
-	  "flags": 1,
-	  "name": "head1",
-	  "frames": [
-	    "rstand_head1",
-	    "rstand_head1",
-	    "rstand_head1"
-	  ],
-	  "offsets": [
-	    "{0,1}",
-	    "{0,0}",
-	    "{0,-1}"
-	  ]
+        {
+          "name": "body",
+          "frames": [
+            "rwalk_body1",
+            "rwalk_body2",
+            "rwalk_body3"
+          ],
+          "triggers": [
+            "",
+            "",
+            "step"
+          ]
+        },
+        {
+          "flags": 1,
+          "name": "head1",
+          "frames": [
+            "rstand_head1",
+            "rstand_head1",
+            "rstand_head1"
+          ],
+          "offsets": [
+            "{0,1}",
+            "{0,0}",
+            "{0,-1}"
+          ]
         }
       ]
     }
