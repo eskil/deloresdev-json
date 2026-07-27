@@ -40,7 +40,7 @@ DeloresDevJSON is a relaxed version of JSON used to describe sprite-sheet animat
 | `NULL` | `NULL` | The special identifier `NULL` becomes `nil` |
 | Dict | `{ key: value }` | Braces required for nested dicts |
 | List | `[value, value]` | `[…]` |
-| Tuple | `{1, 2}` | Braces containing **only numbers** — becomes an Erlang/Elixir tuple of numbers |
+| Tuple | `{1, 2}` | Braces containing **only numbers**<br>become an Erlang/Elixir tuple of numbers |
 
 > **Dict vs. tuple disambiguation:** a `{…}` block is parsed as a *tuple* only when every element is a bare number. If any element is a non-number (string, ident, nested dict, etc.) it is treated as a dict.
 
