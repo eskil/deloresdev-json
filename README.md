@@ -70,7 +70,7 @@ DeloresDevJSON is a relaxed version of JSON used to describe sprite-sheet animat
 
 <table>
 <tr>
-<th>DeloresDevJSON `priv/sample.json`</th>
+<th>DeloresDevJSON (priv/sample.json)</th>
 <th>Standard JSON</th>
 </tr>
 <tr>
