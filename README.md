@@ -191,7 +191,7 @@ Input file (`priv/tests/sample.json`):
 <tr>
 <td>
 
-```json
+```python
 // Delores animations
 sheet: "Delores"
 animations: [
