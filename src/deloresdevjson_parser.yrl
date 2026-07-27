@@ -38,7 +38,9 @@ key -> string : string_to_elixir('$1').
 key -> ident : ident_to_elixir('$1').
 
 % The Erlang code section (which is mandatory), is where you can add
-% erlang functions you can call in the Definitions.
+% erlang functions you can call in the Definitions. In this case we
+% have a to_token to create a token for each named variable (this is
+% not good style, but just to show how to use the code section).
 
 Erlang code.
 
