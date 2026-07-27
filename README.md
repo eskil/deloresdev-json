@@ -76,20 +76,20 @@ Commas between list items or dict entries are **optional**. Newlines alone are s
 The top-level object does not need `{` `}` around it. The file can just be a flat list of `key: value` pairs:
 
 <table>
-  <tr>
-    <th>DeloresDevJSON</th>
-    <th>JSON</th>
-  </tr>
-  <tr>
-    <td>
+<tr>
+<th>DeloresDevJSON</th>
+<th>JSON</th>
+</tr>
+<tr>
+<td>
 
 ```json
 sheet: "Delores"
 animations: [...]
 ```
 
-    </td>
-    <td>
+</td>
+<td>
 
 ```json
 {
@@ -98,14 +98,18 @@ animations: [...]
 }
 ```
 
-    </td>
-  </tr>
+</td>
+</tr>
 </table>
 
 
 In standard JSON, this would be
 
 ```json
+{
+  "sheet": "Delores",
+  "animations": [...]
+}
 ```
 
 ### Number tuples
