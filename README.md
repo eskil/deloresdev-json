@@ -29,7 +29,7 @@ DeloresDevJSON is a relaxed version of JSON used to describe sprite-sheet animat
 * Top object doesn't need curly braces.
 * Supports `NULL` and tuples of numbers.
 
-_NOTE: this exists just to support loading the DeloresDev assets. Consider using yaml/json instead_
+_NOTE: this exists just to support loading the DeloresDev assets. Consider using yaml/json instead in your projects._
 
 ### Values
 
